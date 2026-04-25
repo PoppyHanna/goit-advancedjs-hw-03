@@ -1,0 +1,26 @@
+.hero-container {
+  display: flex;
+  max-width: 1440px;
+  padding: 24px 156px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin: auto;
+}
+/* .gallery {
+  width: 360px;
+  height: 200px;
+  transition: transform 0.3s ease;
+} */
+.image-card {
+  border: 1px solid #000;
+  border-radius: 6px;
+}
+.image-info {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 15px;
+}
