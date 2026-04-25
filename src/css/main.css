@@ -14,7 +14,7 @@ body {
   justify-content: center;
 }
 
-.search-form {
+.form {
   display: flex;
   padding: 24px;
   align-items: center;
