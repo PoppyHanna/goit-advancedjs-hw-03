@@ -1,11 +1,13 @@
 // import SimpleLightbox from "simplelightbox/dist/simple-lightbox.esm"
-import SimpleLightbox from "simplelightbox";
+// import SimpleLightbox from "simplelightbox";
+import SimpleLightbox from "simplelightbox/dist/simple-lightbox.esm.js";
+
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 const gallery = document.querySelector('.js-container');
 const loader = document.querySelector('.loader');
 
-const lightbox = new SimpleLightbox('.js-container, a', {
+const lightbox = new SimpleLightbox('.js-container .image-card a', {
       captionsData: 'alt',
       captionDelay: 250,
   });
@@ -22,11 +24,11 @@ export function hideLoader() {
   loader.style.display = 'none';
 }
 
-export function renderFoto(images) {
+export function createGallery(images) {
     const fragment = document.createDocumentFragment();
 
     images.forEach(image => {
-        const card = document.createElement('div');
+        const card = document.createElement('li');
         card.classList.add('image-card');
 
         const link = document.createElement('a');
