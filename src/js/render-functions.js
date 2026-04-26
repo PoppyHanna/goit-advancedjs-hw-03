@@ -1,38 +1,45 @@
-
-// Описаний у документації
+// import SimpleLightbox from "simplelightbox/dist/simple-lightbox.esm"
 import SimpleLightbox from "simplelightbox";
-// Додатковий імпорт стилів
 import "simplelightbox/dist/simple-lightbox.min.css";
 
+const gallery = document.querySelector('.js-container');
+const loader = document.querySelector('.loader');
 
-export function renderFoto(data) {
-    const gallery = document.querySelector('.js-container');
+const lightbox = new SimpleLightbox('.js-container, a', {
+      captionsData: 'alt',
+      captionDelay: 250,
+  });
+
+export function clearGallery() {
+  gallery.innerHTML = '';
+}
+
+export function showLoader() {
+  loader.style.display = 'block';
+}
+
+export function hideLoader() {
+  loader.style.display = 'none';
+}
+
+export function renderFoto(images) {
     const fragment = document.createDocumentFragment();
 
-    // Очищення вмісту галереї перед додаванням нових карточок
-    gallery.innerHTML = '';
-
-    data.hits.forEach(image => {
-        // Створюємо контейнер для карточки зображення
+    images.forEach(image => {
         const card = document.createElement('div');
         card.classList.add('image-card');
 
-        // Створюємо посилання
         const link = document.createElement('a');
         link.href = image.largeImageURL;
 
-        // Створюємо зображення
         const imgElement = document.createElement('img');
         imgElement.src = image.webformatURL;
         imgElement.alt = image.tags;
 
-        // Додаємо зображення до посилання
         link.appendChild(imgElement);
 
-        // Додаємо посилання з зображенням до карточки
         card.appendChild(link);
 
-        // Створюємо елементи для відображення інформації про зображення
         const infoContainer = document.createElement('div');
         infoContainer.classList.add('image-info');
 
@@ -48,26 +55,18 @@ export function renderFoto(data) {
         const downloadsInfo = document.createElement('span');
         downloadsInfo.textContent = `Downloads: ${image.downloads}`;
 
-        // Додаємо інформацію про зображення до контейнера для інформації
         infoContainer.appendChild(likesInfo);
         infoContainer.appendChild(viewsInfo);
         infoContainer.appendChild(commentsInfo);
         infoContainer.appendChild(downloadsInfo);
 
-        // Додаємо контейнер для інформації до карточки
         card.appendChild(infoContainer);
 
-        // Додаємо карточку до фрагменту
         fragment.appendChild(card);
     });
 
-    // Додаємо фрагмент з карточками до галереї
     gallery.appendChild(fragment);
 
-    // Ініціалізуємо SimpleLightbox для всіх зображень у галереї
-    const lightbox = new SimpleLightbox('.js-container .image-card a', {
-         captionsData: 'alt',
-         captionDelay: 250,
-    });
     lightbox.refresh();
 }
+
