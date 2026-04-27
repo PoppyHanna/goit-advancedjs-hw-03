@@ -1,12 +1,14 @@
-import SimpleLightbox from "simplelightbox/dist/simple-lightbox.esm.js";
+// import SimpleLightbox from "simplelightbox/dist/simple-lightbox.esm.js";
 
+// import SimpleLightbox from "simplelightbox";
 
+// import * as SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 const gallery = document.querySelector('.js-container');
 const loader = document.querySelector('.loader');
 
-const lightbox = new SimpleLightbox('.js-container .image-card a', {
+const lightbox = new window.SimpleLightbox('.js-container .image-card a', {
       captionsData: 'alt',
       captionDelay: 250,
   });
